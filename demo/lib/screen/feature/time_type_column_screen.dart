@@ -7,7 +7,7 @@ import '../../widget/pluto_example_screen.dart';
 class TimeTypeColumnScreen extends StatefulWidget {
   static const routeName = 'feature/time-type-column';
 
-  const TimeTypeColumnScreen({Key? key}) : super(key: key);
+  const TimeTypeColumnScreen({super.key});
 
   @override
   _TimeTypeColumnScreenState createState() => _TimeTypeColumnScreenState();
@@ -23,29 +23,13 @@ class _TimeTypeColumnScreenState extends State<TimeTypeColumnScreen> {
     super.initState();
 
     columns.addAll([
-      PlutoColumn(
-        title: 'Time',
-        field: 'time',
-        type: PlutoColumnType.time(),
-      ),
+      PlutoColumn(title: 'Time', field: 'time', type: PlutoColumnType.time()),
     ]);
 
     rows.addAll([
-      PlutoRow(
-        cells: {
-          'time': PlutoCell(value: '00:00'),
-        },
-      ),
-      PlutoRow(
-        cells: {
-          'time': PlutoCell(value: '23:59'),
-        },
-      ),
-      PlutoRow(
-        cells: {
-          'time': PlutoCell(value: '12:30'),
-        },
-      ),
+      PlutoRow(cells: {'time': PlutoCell(value: '00:00')}),
+      PlutoRow(cells: {'time': PlutoCell(value: '23:59')}),
+      PlutoRow(cells: {'time': PlutoCell(value: '12:30')}),
     ]);
   }
 

@@ -6,11 +6,7 @@ import '../helper/launch_url.dart';
 class PlutoDocsButton extends StatelessWidget {
   final String url;
 
-  PlutoDocsButton({
-    Key? key,
-    required this.url,
-  })  : assert(url.isNotEmpty),
-        super(key: key);
+  PlutoDocsButton({super.key, required this.url}) : assert(url.isNotEmpty);
 
   @override
   Widget build(BuildContext context) {

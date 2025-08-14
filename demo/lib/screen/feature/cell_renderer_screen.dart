@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class CellRendererScreen extends StatefulWidget {
   static const routeName = 'feature/cell-renderer';
 
-  const CellRendererScreen({Key? key}) : super(key: key);
+  const CellRendererScreen({super.key});
 
   @override
   _CellRendererScreenState createState() => _CellRendererScreenState();
@@ -38,9 +38,7 @@ class _CellRendererScreenState extends State<CellRendererScreen> {
           return Row(
             children: [
               IconButton(
-                icon: const Icon(
-                  Icons.add_circle,
-                ),
+                icon: const Icon(Icons.add_circle),
                 onPressed: () {
                   rendererContext.stateManager.insertRows(
                     rendererContext.rowIdx,
@@ -52,12 +50,11 @@ class _CellRendererScreenState extends State<CellRendererScreen> {
                 padding: const EdgeInsets.all(0),
               ),
               IconButton(
-                icon: const Icon(
-                  Icons.remove_circle_outlined,
-                ),
+                icon: const Icon(Icons.remove_circle_outlined),
                 onPressed: () {
-                  rendererContext.stateManager
-                      .removeRows([rendererContext.row]);
+                  rendererContext.stateManager.removeRows([
+                    rendererContext.row,
+                  ]);
                 },
                 iconSize: 18,
                 color: Colors.red,
@@ -92,10 +89,7 @@ class _CellRendererScreenState extends State<CellRendererScreen> {
 
           return Text(
             rendererContext.cell.value.toString(),
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
           );
         },
       ),

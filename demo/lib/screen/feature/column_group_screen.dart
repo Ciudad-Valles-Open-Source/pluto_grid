@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class ColumnGroupScreen extends StatefulWidget {
   static const routeName = 'feature/column-group';
 
-  const ColumnGroupScreen({Key? key}) : super(key: key);
+  const ColumnGroupScreen({super.key});
 
   @override
   _ColumnGroupScreenState createState() => _ColumnGroupScreenState();
@@ -100,14 +100,8 @@ class _ColumnGroupScreenState extends State<ColumnGroupScreen> {
             title: 'A - 2',
             backgroundColor: Colors.greenAccent,
             children: [
-              PlutoColumnGroup(
-                title: 'A - 2 - 1',
-                fields: ['column4'],
-              ),
-              PlutoColumnGroup(
-                title: 'A - 2 - 2',
-                fields: ['column5'],
-              ),
+              PlutoColumnGroup(title: 'A - 2 - 1', fields: ['column4']),
+              PlutoColumnGroup(title: 'A - 2 - 2', fields: ['column5']),
             ],
           ),
         ],
@@ -121,14 +115,8 @@ class _ColumnGroupScreenState extends State<ColumnGroupScreen> {
               PlutoColumnGroup(
                 title: 'B - 1 - 1',
                 children: [
-                  PlutoColumnGroup(
-                    title: 'B - 1 - 1 - 1',
-                    fields: ['column6'],
-                  ),
-                  PlutoColumnGroup(
-                    title: 'B - 1 - 1 - 2',
-                    fields: ['column7'],
-                  ),
+                  PlutoColumnGroup(title: 'B - 1 - 1 - 1', fields: ['column6']),
+                  PlutoColumnGroup(title: 'B - 1 - 1 - 2', fields: ['column7']),
                 ],
               ),
               PlutoColumnGroup(
@@ -151,7 +139,8 @@ class _ColumnGroupScreenState extends State<ColumnGroupScreen> {
       topContents: const [
         Text('You can group columns by any depth you want.'),
         Text(
-            'You can also separate grouped columns by dragging and dropping columns.'),
+          'You can also separate grouped columns by dragging and dropping columns.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

@@ -7,7 +7,7 @@ import '../../widget/pluto_example_screen.dart';
 class ColumnHidingScreen extends StatefulWidget {
   static const routeName = 'feature/column-hiding';
 
-  const ColumnHidingScreen({Key? key}) : super(key: key);
+  const ColumnHidingScreen({super.key});
 
   @override
   _ColumnHidingScreenState createState() => _ColumnHidingScreenState();
@@ -85,9 +85,11 @@ class _ColumnHidingScreenState extends State<ColumnHidingScreen> {
       topContents: const [
         Text('You can hide or un-hide the column.'),
         Text(
-            'Hide or un-hide columns with the Hide column and Set Columns items in the menu on the right of the column title.'),
+          'Hide or un-hide columns with the Hide column and Set Columns items in the menu on the right of the column title.',
+        ),
         Text(
-            'You can directly change the hidden state of a column with hideColumn of stateManager or call a popup with showSetColumnsPopup.'),
+          'You can directly change the hidden state of a column with hideColumn of stateManager or call a popup with showSetColumnsPopup.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

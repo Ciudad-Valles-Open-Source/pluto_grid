@@ -7,7 +7,7 @@ import '../../widget/pluto_example_screen.dart';
 class DateTypeColumnScreen extends StatefulWidget {
   static const routeName = 'feature/date-type-column';
 
-  const DateTypeColumnScreen({Key? key}) : super(key: key);
+  const DateTypeColumnScreen({super.key});
 
   @override
   _DateTypeColumnScreenState createState() => _DateTypeColumnScreenState();
@@ -31,23 +31,17 @@ class _DateTypeColumnScreenState extends State<DateTypeColumnScreen> {
       PlutoColumn(
         title: 'MM/dd/yyyy',
         field: 'mm_dd_yyyy',
-        type: PlutoColumnType.date(
-          format: 'MM/dd/yyyy',
-        ),
+        type: PlutoColumnType.date(format: 'MM/dd/yyyy'),
       ),
       PlutoColumn(
         title: 'with StartDate',
         field: 'with_start_date',
-        type: PlutoColumnType.date(
-          startDate: DateTime.parse('2020-01-01'),
-        ),
+        type: PlutoColumnType.date(startDate: DateTime.parse('2020-01-01')),
       ),
       PlutoColumn(
         title: 'with EndDate',
         field: 'with_end_date',
-        type: PlutoColumnType.date(
-          endDate: DateTime.parse('2020-01-01'),
-        ),
+        type: PlutoColumnType.date(endDate: DateTime.parse('2020-01-01')),
       ),
       PlutoColumn(
         title: 'with Both',

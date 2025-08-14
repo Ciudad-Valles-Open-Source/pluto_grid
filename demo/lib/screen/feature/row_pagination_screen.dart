@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class RowPaginationScreen extends StatefulWidget {
   static const routeName = 'feature/row-pagination';
 
-  const RowPaginationScreen({Key? key}) : super(key: key);
+  const RowPaginationScreen({super.key});
 
   @override
   _RowPaginationScreenState createState() => _RowPaginationScreenState();
@@ -37,9 +37,11 @@ class _RowPaginationScreenState extends State<RowPaginationScreen> {
       topTitle: 'Row pagination',
       topContents: const [
         Text(
-            'If you pass the built-in PlutoPagination widget as the return value of the createFooter callback when creating a grid, pagination is processed.'),
+          'If you pass the built-in PlutoPagination widget as the return value of the createFooter callback when creating a grid, pagination is processed.',
+        ),
         Text(
-            'Also, referring to PlutoPagination, you can create a UI in the desired shape and set it as the response value of the createFooter callback.'),
+          'Also, referring to PlutoPagination, you can create a UI in the desired shape and set it as the response value of the createFooter callback.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

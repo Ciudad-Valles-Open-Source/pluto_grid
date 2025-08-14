@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class DarkModeScreen extends StatefulWidget {
   static const routeName = 'feature/dark-mode';
 
-  const DarkModeScreen({Key? key}) : super(key: key);
+  const DarkModeScreen({super.key});
 
   @override
   _DarkModeScreenState createState() => _DarkModeScreenState();
@@ -35,9 +35,7 @@ class _DarkModeScreenState extends State<DarkModeScreen> {
     return PlutoExampleScreen(
       title: 'Dark mode',
       topTitle: 'Dark mode',
-      topContents: const [
-        Text('Change the entire theme of the grid to Dark.'),
-      ],
+      topContents: const [Text('Change the entire theme of the grid to Dark.')],
       topButtons: [
         PlutoExampleButton(
           url:

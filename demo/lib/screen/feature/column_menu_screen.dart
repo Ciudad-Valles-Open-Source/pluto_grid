@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class ColumnMenuScreen extends StatefulWidget {
   static const routeName = 'feature/column-menu';
 
-  const ColumnMenuScreen({Key? key}) : super(key: key);
+  const ColumnMenuScreen({super.key});
 
   @override
   _ColumnMenuScreenState createState() => _ColumnMenuScreenState();
@@ -109,7 +109,4 @@ class _UserColumnMenu implements PlutoColumnMenuDelegate<_UserColumnMenuItem> {
   }
 }
 
-enum _UserColumnMenuItem {
-  moveNext,
-  movePrevious,
-}
+enum _UserColumnMenuItem { moveNext, movePrevious }

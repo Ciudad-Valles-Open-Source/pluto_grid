@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class RowColorScreen extends StatefulWidget {
   static const routeName = 'feature/row-color';
 
-  const RowColorScreen({Key? key}) : super(key: key);
+  const RowColorScreen({super.key});
 
   @override
   _RowColorScreenState createState() => _RowColorScreenState();
@@ -39,9 +39,11 @@ class _RowColorScreenState extends State<RowColorScreen> {
       topTitle: 'Row color',
       topContents: const [
         Text(
-            'You can dynamically change the row color of row by implementing rowColorCallback.'),
+          'You can dynamically change the row color of row by implementing rowColorCallback.',
+        ),
         Text(
-            'If you change the value of the 5th column, the background color is dynamically changed according to the value.'),
+          'If you change the value of the 5th column, the background color is dynamically changed according to the value.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

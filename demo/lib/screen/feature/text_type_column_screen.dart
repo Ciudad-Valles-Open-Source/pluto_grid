@@ -7,7 +7,7 @@ import '../../widget/pluto_example_screen.dart';
 class TextTypeColumnScreen extends StatefulWidget {
   static const routeName = 'feature/text-type-column';
 
-  const TextTypeColumnScreen({Key? key}) : super(key: key);
+  const TextTypeColumnScreen({super.key});
 
   @override
   _TextTypeColumnScreenState createState() => _TextTypeColumnScreenState();
@@ -63,9 +63,7 @@ class _TextTypeColumnScreenState extends State<TextTypeColumnScreen> {
     return PlutoExampleScreen(
       title: 'Text type column',
       topTitle: 'Text type column',
-      topContents: const [
-        Text('A column to enter a character value.'),
-      ],
+      topContents: const [Text('A column to enter a character value.')],
       topButtons: [
         PlutoExampleButton(
           url:

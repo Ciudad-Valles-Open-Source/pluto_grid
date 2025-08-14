@@ -7,7 +7,7 @@ import '../../widget/pluto_example_screen.dart';
 class NumberTypeColumnScreen extends StatefulWidget {
   static const routeName = 'feature/number-type-column';
 
-  const NumberTypeColumnScreen({Key? key}) : super(key: key);
+  const NumberTypeColumnScreen({super.key});
 
   @override
   _NumberTypeColumnScreenState createState() => _NumberTypeColumnScreenState();
@@ -31,31 +31,22 @@ class _NumberTypeColumnScreenState extends State<NumberTypeColumnScreen> {
       PlutoColumn(
         title: 'Negative false',
         field: 'negative_false',
-        type: PlutoColumnType.number(
-          negative: false,
-        ),
+        type: PlutoColumnType.number(negative: false),
       ),
       PlutoColumn(
         title: '2 decimal places',
         field: 'two_decimal',
-        type: PlutoColumnType.number(
-          format: '#,###.##',
-        ),
+        type: PlutoColumnType.number(format: '#,###.##'),
       ),
       PlutoColumn(
         title: '3 decimal places',
         field: 'three_decimal',
-        type: PlutoColumnType.number(
-          format: '#,###.###',
-        ),
+        type: PlutoColumnType.number(format: '#,###.###'),
       ),
       PlutoColumn(
         title: '3 decimal places with denmark locale',
         field: 'three_decimal_with_denmark_locale',
-        type: PlutoColumnType.number(
-          format: '#,###.###',
-          locale: 'da_DK',
-        ),
+        type: PlutoColumnType.number(format: '#,###.###', locale: 'da_DK'),
       ),
     ]);
 
@@ -95,9 +86,7 @@ class _NumberTypeColumnScreenState extends State<NumberTypeColumnScreen> {
     return PlutoExampleScreen(
       title: 'Number type column',
       topTitle: 'Number type column',
-      topContents: const [
-        Text('A column to enter a number value.'),
-      ],
+      topContents: const [Text('A column to enter a number value.')],
       topButtons: [
         PlutoExampleButton(
           url:

@@ -48,13 +48,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute:
-          kReleaseMode ? HomeScreen.routeName : DevelopmentScreen.routeName,
+      initialRoute: kReleaseMode
+          ? HomeScreen.routeName
+          : DevelopmentScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
         AddAndRemoveColumnRowScreen.routeName: (context) =>
@@ -119,7 +120,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: PlutoGridExampleColors.backgroundColor,
         colorScheme: const ColorScheme.light(
           primary: PlutoGridExampleColors.primaryColor,
-          background: PlutoGridExampleColors.backgroundColor,
+          surface: PlutoGridExampleColors.backgroundColor,
         ),
       ),
     );

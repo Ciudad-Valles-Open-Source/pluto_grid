@@ -1,3 +1,5 @@
+// ignore_for_file: type_literal_in_constant_pattern
+
 import 'package:flutter/cupertino.dart';
 import 'package:pluto_grid/pluto_grid.dart';
 
@@ -5,7 +7,7 @@ import '../ui/ui.dart';
 
 class PlutoChangeNotifierFilter<T> {
   PlutoChangeNotifierFilter(this._filter, [this._debugNotifierNames])
-      : _type = T;
+    : _type = T;
 
   static bool enabled = true;
 
@@ -244,7 +246,8 @@ class PlutoNotifierFilterResolverDefault
   }
 
   static Set<int> defaultAggregateColumnFooterFilter(
-      PlutoGridStateManager stateManager) {
+    PlutoGridStateManager stateManager,
+  ) {
     return {
       stateManager.toggleAllRowChecked.hashCode,
       stateManager.setRowChecked.hashCode,

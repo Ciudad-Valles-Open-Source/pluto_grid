@@ -10,7 +10,7 @@ import '../../widget/pluto_example_screen.dart';
 class RowLazyPaginationScreen extends StatefulWidget {
   static const routeName = 'feature/row-lazy-pagination';
 
-  const RowLazyPaginationScreen({Key? key}) : super(key: key);
+  const RowLazyPaginationScreen({super.key});
 
   @override
   State<RowLazyPaginationScreen> createState() =>
@@ -117,10 +117,12 @@ class _RowLazyPaginationScreenState extends State<RowLazyPaginationScreen> {
 
     await Future.delayed(const Duration(milliseconds: 500));
 
-    return Future.value(PlutoLazyPaginationResponse(
-      totalPage: totalPage,
-      rows: fetchedRows.toList(),
-    ));
+    return Future.value(
+      PlutoLazyPaginationResponse(
+        totalPage: totalPage,
+        rows: fetchedRows.toList(),
+      ),
+    );
   }
 
   @override
@@ -130,7 +132,8 @@ class _RowLazyPaginationScreenState extends State<RowLazyPaginationScreen> {
       topTitle: 'Row lazy pagination',
       topContents: const [
         Text(
-            'Implement pagination in the form of fetching data from the server.'),
+          'Implement pagination in the form of fetching data from the server.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

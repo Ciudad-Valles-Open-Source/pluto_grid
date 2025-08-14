@@ -1,3 +1,5 @@
+// ignore_for_file: void_checks
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -41,9 +43,7 @@ class PlutoGridKeyManager {
 
   PlutoGridKeyEventResult eventResult = PlutoGridKeyEventResult();
 
-  PlutoGridKeyManager({
-    required this.stateManager,
-  });
+  PlutoGridKeyManager({required this.stateManager});
 
   final PublishSubject<PlutoKeyManagerEvent> _subject =
       PublishSubject<PlutoKeyManagerEvent>();
@@ -63,12 +63,13 @@ class PlutoGridKeyManager {
   void init() {
     final normalStream = _subject.stream.where((event) => !event.needsThrottle);
 
-    final movingStream =
-        _subject.stream.where((event) => event.needsThrottle).transform(
-              ThrottleStreamTransformer(
-                (_) => TimerStream(_, const Duration(milliseconds: 1)),
-              ),
-            );
+    final movingStream = _subject.stream
+        .where((event) => event.needsThrottle)
+        .transform(
+          ThrottleStreamTransformer(
+            (e) => TimerStream(e, const Duration(milliseconds: 1)),
+          ),
+        );
 
     _subscription = MergeStream([normalStream, movingStream]).listen(_handler);
   }

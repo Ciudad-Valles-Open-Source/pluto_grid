@@ -7,7 +7,7 @@ import '../../widget/pluto_example_screen.dart';
 class SelectionTypeColumnScreen extends StatefulWidget {
   static const routeName = 'feature/selection-type-column';
 
-  const SelectionTypeColumnScreen({Key? key}) : super(key: key);
+  const SelectionTypeColumnScreen({super.key});
 
   @override
   _SelectionTypeColumnScreenState createState() =>
@@ -27,62 +27,50 @@ class _SelectionTypeColumnScreenState extends State<SelectionTypeColumnScreen> {
       PlutoColumn(
         title: 'Select A',
         field: 'select_a',
-        type: PlutoColumnType.select(
-          <String>[
-            'One',
-            'Two',
-            'Three',
-          ],
-          enableColumnFilter: true,
-        ),
+        type: PlutoColumnType.select(<String>[
+          'One',
+          'Two',
+          'Three',
+        ], enableColumnFilter: true),
       ),
       PlutoColumn(
         title: 'Select B',
         field: 'select_b',
-        type: PlutoColumnType.select(
-          <String>[
-            'Mercury',
-            'Venus',
-            'Earth',
-            'Mars',
-            'Jupiter',
-            'Saturn',
-            'Uranus',
-            'Neptune',
-            'Pluto',
-          ],
-          enableColumnFilter: true,
-        ),
+        type: PlutoColumnType.select(<String>[
+          'Mercury',
+          'Venus',
+          'Earth',
+          'Mars',
+          'Jupiter',
+          'Saturn',
+          'Uranus',
+          'Neptune',
+          'Pluto',
+        ], enableColumnFilter: true),
       ),
       PlutoColumn(
         title: 'Select C',
         field: 'select_c',
-        type: PlutoColumnType.select(
-          <String>[
-            '9.01',
-            '30.02',
-            '100.001',
-          ],
-          enableColumnFilter: true,
-        ),
+        type: PlutoColumnType.select(<String>[
+          '9.01',
+          '30.02',
+          '100.001',
+        ], enableColumnFilter: true),
       ),
       PlutoColumn(
         title: 'Select D',
         field: 'select_d',
-        type: PlutoColumnType.select(
-          <String>[
-            '一',
-            '二',
-            '三',
-            '四',
-            '五',
-            '六',
-            '七',
-            '八',
-            '九',
-          ],
-          enableColumnFilter: true,
-        ),
+        type: PlutoColumnType.select(<String>[
+          '一',
+          '二',
+          '三',
+          '四',
+          '五',
+          '六',
+          '七',
+          '八',
+          '九',
+        ], enableColumnFilter: true),
       ),
     ]);
 
@@ -122,7 +110,8 @@ class _SelectionTypeColumnScreenState extends State<SelectionTypeColumnScreen> {
       topContents: const [
         Text('A column to enter a selection value.'),
         Text(
-            'The sorting of the Selection column is based on the order of the Select items.'),
+          'The sorting of the Selection column is based on the order of the Select items.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(
@@ -137,9 +126,9 @@ class _SelectionTypeColumnScreenState extends State<SelectionTypeColumnScreen> {
           print(event);
         },
         configuration: const PlutoGridConfiguration(
-            // If you don't want to move to the next line after selecting the pop-up item, uncomment it.
-            // enableMoveDownAfterSelecting: false,
-            ),
+          // If you don't want to move to the next line after selecting the pop-up item, uncomment it.
+          // enableMoveDownAfterSelecting: false,
+        ),
       ),
     );
   }

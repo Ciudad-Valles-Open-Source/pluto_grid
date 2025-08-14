@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class RTLScreen extends StatefulWidget {
   static const routeName = 'feature/rtl';
 
-  const RTLScreen({Key? key}) : super(key: key);
+  const RTLScreen({super.key});
 
   @override
   _RTLScreenState createState() => _RTLScreenState();
@@ -37,7 +37,8 @@ class _RTLScreenState extends State<RTLScreen> {
       topTitle: 'Text direction.',
       topContents: const [
         Text(
-            'Wrap the PlutoGrid with a Directionality widget and pass rtl to textDirection to enable RTL.'),
+          'Wrap the PlutoGrid with a Directionality widget and pass rtl to textDirection to enable RTL.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

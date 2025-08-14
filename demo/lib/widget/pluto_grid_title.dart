@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class PlutoGridTitle extends StatelessWidget {
   final double? fontSize;
 
-  const PlutoGridTitle({
-    Key? key,
-    this.fontSize,
-  }) : super(key: key);
+  const PlutoGridTitle({super.key, this.fontSize});
 
   @override
   Widget build(BuildContext context) {

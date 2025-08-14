@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pluto_grid/pluto_grid.dart';
 
-typedef SetFilterPopupHandler = void Function(
-    PlutoGridStateManager? stateManager);
+typedef SetFilterPopupHandler =
+    void Function(PlutoGridStateManager? stateManager);
 
 class FilterHelper {
   /// A value to identify all column searches when searching filters.
@@ -41,10 +41,12 @@ class FilterHelper {
   }) {
     return PlutoRow(
       cells: {
-        filterFieldColumn:
-            PlutoCell(value: columnField ?? filterFieldAllColumns),
-        filterFieldType:
-            PlutoCell(value: filterType ?? const PlutoFilterTypeContains()),
+        filterFieldColumn: PlutoCell(
+          value: columnField ?? filterFieldAllColumns,
+        ),
+        filterFieldType: PlutoCell(
+          value: filterType ?? const PlutoFilterTypeContains(),
+        ),
         filterFieldValue: PlutoCell(value: filterValue ?? ''),
       },
     );
@@ -111,7 +113,7 @@ class FilterHelper {
     };
   }
 
-  /// Converts List<PlutoRow> type with filtering information to Map type.
+  /// Converts `List<PlutoRow>` type with filtering information to Map type.
   ///
   /// [allField] determines the key value of the filter applied to the entire scope.
   /// Default is all.
@@ -219,7 +221,8 @@ class FilterHelper {
     if (column.type is PlutoColumnTypeWithNumberFormat) {
       final numberColumn = column.type as PlutoColumnTypeWithNumberFormat;
 
-      compare = compare ||
+      compare =
+          compare ||
           filterType.compare(
             base: numberColumn.applyFormat(base),
             search: search,
@@ -233,11 +236,7 @@ class FilterHelper {
     }
 
     return compare ||
-        filterType.compare(
-          base: base,
-          search: search,
-          column: column,
-        );
+        filterType.compare(base: base, search: search, column: column);
   }
 
   /// Whether [search] is contains in [base].
@@ -246,10 +245,7 @@ class FilterHelper {
     required String? search,
     required PlutoColumn column,
   }) {
-    return _compareWithRegExp(
-      RegExp.escape(search!),
-      base!,
-    );
+    return _compareWithRegExp(RegExp.escape(search!), base!);
   }
 
   /// Whether [search] is equals to [base].
@@ -328,10 +324,7 @@ class FilterHelper {
     String value, {
     bool caseSensitive = false,
   }) {
-    return RegExp(
-      pattern,
-      caseSensitive: caseSensitive,
-    ).hasMatch(value);
+    return RegExp(pattern, caseSensitive: caseSensitive).hasMatch(value);
   }
 }
 
@@ -377,8 +370,8 @@ class FilterPopupState {
     this.width = 600,
     this.height = 450,
     this.onClosed,
-  })  : assert(columns.isNotEmpty),
-        _previousFilterRows = [...filterRows];
+  }) : assert(columns.isNotEmpty),
+       _previousFilterRows = [...filterRows];
 
   PlutoGridStateManager? _stateManager;
   List<PlutoRow?> _previousFilterRows;
@@ -562,11 +555,12 @@ class PlutoGridFilterPopupHeader extends StatelessWidget {
 
 /// [base] is the cell values of the column on which the search is based.
 /// [search] is the value entered by the user to search.
-typedef PlutoCompareFunction = bool Function({
-  required String? base,
-  required String? search,
-  required PlutoColumn column,
-});
+typedef PlutoCompareFunction =
+    bool Function({
+      required String? base,
+      required String? search,
+      required PlutoColumn column,
+    });
 
 abstract class PlutoFilterType {
   String get title => throw UnimplementedError();

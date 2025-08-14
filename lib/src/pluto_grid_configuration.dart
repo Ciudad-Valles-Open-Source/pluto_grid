@@ -122,9 +122,7 @@ class PlutoGridConfiguration {
     for (var i = 0; i < len; i += 1) {
       var column = refColumns[i];
 
-      column.setDefaultFilter(
-        columnFilter.getDefaultColumnFilter(column),
-      );
+      column.setDefaultFilter(columnFilter.getDefaultColumnFilter(column));
     }
   }
 
@@ -177,17 +175,17 @@ class PlutoGridConfiguration {
 
   @override
   int get hashCode => Object.hash(
-        enableMoveDownAfterSelecting,
-        enableMoveHorizontalInEditing,
-        enterKeyAction,
-        tabKeyAction,
-        shortcut,
-        style,
-        scrollbar,
-        columnFilter,
-        columnSize,
-        localeText,
-      );
+    enableMoveDownAfterSelecting,
+    enableMoveHorizontalInEditing,
+    enterKeyAction,
+    tabKeyAction,
+    shortcut,
+    style,
+    scrollbar,
+    columnFilter,
+    columnSize,
+    localeText,
+  );
 }
 
 class PlutoGridStyleConfig {
@@ -228,10 +226,7 @@ class PlutoGridStyleConfig {
       fontSize: 14,
       fontWeight: FontWeight.w600,
     ),
-    this.cellTextStyle = const TextStyle(
-      color: Colors.black,
-      fontSize: 14,
-    ),
+    this.cellTextStyle = const TextStyle(color: Colors.black, fontSize: 14),
     this.columnContextIcon = Icons.dehaze,
     this.columnResizeIcon = Icons.code_sharp,
     this.columnAscendingIcon,
@@ -284,10 +279,7 @@ class PlutoGridStyleConfig {
       fontSize: 14,
       fontWeight: FontWeight.w600,
     ),
-    this.cellTextStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 14,
-    ),
+    this.cellTextStyle = const TextStyle(color: Colors.white, fontSize: 14),
     this.columnContextIcon = Icons.dehaze,
     this.columnResizeIcon = Icons.code_sharp,
     this.columnAscendingIcon,
@@ -507,8 +499,9 @@ class PlutoGridStyleConfig {
       gridBackgroundColor: gridBackgroundColor ?? this.gridBackgroundColor,
       rowColor: rowColor ?? this.rowColor,
       oddRowColor: oddRowColor == null ? this.oddRowColor : oddRowColor.value,
-      evenRowColor:
-          evenRowColor == null ? this.evenRowColor : evenRowColor.value,
+      evenRowColor: evenRowColor == null
+          ? this.evenRowColor
+          : evenRowColor.value,
       activatedColor: activatedColor ?? this.activatedColor,
       checkedColor: checkedColor ?? this.checkedColor,
       cellColorInEditState: cellColorInEditState ?? this.cellColorInEditState,
@@ -607,48 +600,48 @@ class PlutoGridStyleConfig {
 
   @override
   int get hashCode => Object.hashAll([
-        enableGridBorderShadow,
-        enableColumnBorderVertical,
-        enableColumnBorderHorizontal,
-        enableCellBorderVertical,
-        enableCellBorderHorizontal,
-        enableRowColorAnimation,
-        gridBackgroundColor,
-        rowColor,
-        oddRowColor,
-        evenRowColor,
-        activatedColor,
-        checkedColor,
-        cellColorInEditState,
-        cellColorInReadOnlyState,
-        cellColorGroupedRow,
-        dragTargetColumnColor,
-        iconColor,
-        disabledIconColor,
-        menuBackgroundColor,
-        gridBorderColor,
-        borderColor,
-        activatedBorderColor,
-        inactivatedBorderColor,
-        iconSize,
-        rowHeight,
-        columnHeight,
-        columnFilterHeight,
-        defaultColumnTitlePadding,
-        defaultColumnFilterPadding,
-        defaultCellPadding,
-        columnTextStyle,
-        cellTextStyle,
-        columnContextIcon,
-        columnResizeIcon,
-        columnAscendingIcon,
-        columnDescendingIcon,
-        rowGroupExpandedIcon,
-        rowGroupCollapsedIcon,
-        rowGroupEmptyIcon,
-        gridBorderRadius,
-        gridPopupBorderRadius,
-      ]);
+    enableGridBorderShadow,
+    enableColumnBorderVertical,
+    enableColumnBorderHorizontal,
+    enableCellBorderVertical,
+    enableCellBorderHorizontal,
+    enableRowColorAnimation,
+    gridBackgroundColor,
+    rowColor,
+    oddRowColor,
+    evenRowColor,
+    activatedColor,
+    checkedColor,
+    cellColorInEditState,
+    cellColorInReadOnlyState,
+    cellColorGroupedRow,
+    dragTargetColumnColor,
+    iconColor,
+    disabledIconColor,
+    menuBackgroundColor,
+    gridBorderColor,
+    borderColor,
+    activatedBorderColor,
+    inactivatedBorderColor,
+    iconSize,
+    rowHeight,
+    columnHeight,
+    columnFilterHeight,
+    defaultColumnTitlePadding,
+    defaultColumnFilterPadding,
+    defaultCellPadding,
+    columnTextStyle,
+    cellTextStyle,
+    columnContextIcon,
+    columnResizeIcon,
+    columnAscendingIcon,
+    columnDescendingIcon,
+    rowGroupExpandedIcon,
+    rowGroupCollapsedIcon,
+    rowGroupEmptyIcon,
+    gridBorderRadius,
+    gridPopupBorderRadius,
+  ]);
 }
 
 /// Allows to customise scrollbars "look and feel"
@@ -741,30 +734,31 @@ class PlutoGridScrollbarConfig {
 
   @override
   int get hashCode => Object.hash(
-        draggableScrollbar,
-        isAlwaysShown,
-        onlyDraggingThumb,
-        enableScrollAfterDragEnd,
-        scrollbarThickness,
-        scrollbarThicknessWhileDragging,
-        hoverWidth,
-        mainAxisMargin,
-        crossAxisMargin,
-        scrollBarColor,
-        scrollBarTrackColor,
-        scrollbarRadius,
-        scrollbarRadiusWhileDragging,
-        longPressDuration,
-        dragDevices,
-      );
+    draggableScrollbar,
+    isAlwaysShown,
+    onlyDraggingThumb,
+    enableScrollAfterDragEnd,
+    scrollbarThickness,
+    scrollbarThicknessWhileDragging,
+    hoverWidth,
+    mainAxisMargin,
+    crossAxisMargin,
+    scrollBarColor,
+    scrollBarTrackColor,
+    scrollbarRadius,
+    scrollbarRadiusWhileDragging,
+    longPressDuration,
+    dragDevices,
+  );
 }
 
 typedef PlutoGridColumnFilterResolver = Function<T>();
 
-typedef PlutoGridResolveDefaultColumnFilter = PlutoFilterType Function(
-  PlutoColumn column,
-  PlutoGridColumnFilterResolver resolver,
-);
+typedef PlutoGridResolveDefaultColumnFilter =
+    PlutoFilterType Function(
+      PlutoColumn column,
+      PlutoGridColumnFilterResolver resolver,
+    );
 
 class PlutoGridColumnFilterConfig {
   /// # Set the filter information of the column.
@@ -819,13 +813,13 @@ class PlutoGridColumnFilterConfig {
     List<PlutoFilterType>? filters,
     PlutoGridResolveDefaultColumnFilter? resolveDefaultColumnFilter,
     int? debounceMilliseconds,
-  })  : _userFilters = filters,
-        _userResolveDefaultColumnFilter = resolveDefaultColumnFilter,
-        _debounceMilliseconds = debounceMilliseconds == null
-            ? PlutoGridSettings.debounceMillisecondsForColumnFilter
-            : debounceMilliseconds < 0
-                ? 0
-                : debounceMilliseconds;
+  }) : _userFilters = filters,
+       _userResolveDefaultColumnFilter = resolveDefaultColumnFilter,
+       _debounceMilliseconds = debounceMilliseconds == null
+           ? PlutoGridSettings.debounceMillisecondsForColumnFilter
+           : debounceMilliseconds < 0
+           ? 0
+           : debounceMilliseconds;
 
   final List<PlutoFilterType>? _userFilters;
 
@@ -833,7 +827,7 @@ class PlutoGridColumnFilterConfig {
 
   final int _debounceMilliseconds;
 
-  bool get hasUserFilter => _userFilters != null && _userFilters!.isNotEmpty;
+  bool get hasUserFilter => _userFilters != null && _userFilters.isNotEmpty;
 
   List<PlutoFilterType> get filters =>
       hasUserFilter ? _userFilters! : FilterHelper.defaultFilters;
@@ -841,9 +835,7 @@ class PlutoGridColumnFilterConfig {
   int get debounceMilliseconds => _debounceMilliseconds;
 
   PlutoFilterType resolver<T>() {
-    return filters.firstWhereOrNull(
-          (element) => element.runtimeType == T,
-        ) ??
+    return filters.firstWhereOrNull((element) => element.runtimeType == T) ??
         filters.first;
   }
 
@@ -852,7 +844,7 @@ class PlutoGridColumnFilterConfig {
       return filters.first;
     }
 
-    var resolvedFilter = _userResolveDefaultColumnFilter!(column, resolver);
+    var resolvedFilter = _userResolveDefaultColumnFilter(column, resolver);
 
     assert(filters.contains(resolvedFilter));
 
@@ -872,10 +864,10 @@ class PlutoGridColumnFilterConfig {
 
   @override
   int get hashCode => Object.hash(
-        _userFilters,
-        _userResolveDefaultColumnFilter,
-        _debounceMilliseconds,
-      );
+    _userFilters,
+    _userResolveDefaultColumnFilter,
+    _debounceMilliseconds,
+  );
 }
 
 /// Automatically change the column width or set the mode when changing the width.
@@ -935,13 +927,16 @@ class PlutoGridColumnSizeConfig {
       resizeMode: resizeMode ?? this.resizeMode,
       restoreAutoSizeAfterHideColumn:
           restoreAutoSizeAfterHideColumn ?? this.restoreAutoSizeAfterHideColumn,
-      restoreAutoSizeAfterFrozenColumn: restoreAutoSizeAfterFrozenColumn ??
+      restoreAutoSizeAfterFrozenColumn:
+          restoreAutoSizeAfterFrozenColumn ??
           this.restoreAutoSizeAfterFrozenColumn,
       restoreAutoSizeAfterMoveColumn:
           restoreAutoSizeAfterMoveColumn ?? this.restoreAutoSizeAfterMoveColumn,
-      restoreAutoSizeAfterInsertColumn: restoreAutoSizeAfterInsertColumn ??
+      restoreAutoSizeAfterInsertColumn:
+          restoreAutoSizeAfterInsertColumn ??
           this.restoreAutoSizeAfterInsertColumn,
-      restoreAutoSizeAfterRemoveColumn: restoreAutoSizeAfterRemoveColumn ??
+      restoreAutoSizeAfterRemoveColumn:
+          restoreAutoSizeAfterRemoveColumn ??
           this.restoreAutoSizeAfterRemoveColumn,
     );
   }
@@ -967,14 +962,14 @@ class PlutoGridColumnSizeConfig {
 
   @override
   int get hashCode => Object.hash(
-        autoSizeMode,
-        resizeMode,
-        restoreAutoSizeAfterHideColumn,
-        restoreAutoSizeAfterFrozenColumn,
-        restoreAutoSizeAfterMoveColumn,
-        restoreAutoSizeAfterInsertColumn,
-        restoreAutoSizeAfterRemoveColumn,
-      );
+    autoSizeMode,
+    resizeMode,
+    restoreAutoSizeAfterHideColumn,
+    restoreAutoSizeAfterFrozenColumn,
+    restoreAutoSizeAfterMoveColumn,
+    restoreAutoSizeAfterInsertColumn,
+    restoreAutoSizeAfterRemoveColumn,
+  );
 }
 
 class PlutoGridLocaleText {
@@ -1621,38 +1616,38 @@ class PlutoGridLocaleText {
 
   @override
   int get hashCode => Object.hashAll([
-        unfreezeColumn,
-        freezeColumnToStart,
-        freezeColumnToEnd,
-        autoFitColumn,
-        hideColumn,
-        setColumns,
-        setFilter,
-        resetFilter,
-        setColumnsTitle,
-        filterColumn,
-        filterType,
-        filterValue,
-        filterAllColumns,
-        filterContains,
-        filterEquals,
-        filterStartsWith,
-        filterEndsWith,
-        filterGreaterThan,
-        filterGreaterThanOrEqualTo,
-        filterLessThan,
-        filterLessThanOrEqualTo,
-        sunday,
-        monday,
-        tuesday,
-        wednesday,
-        thursday,
-        friday,
-        saturday,
-        hour,
-        minute,
-        loadingText,
-      ]);
+    unfreezeColumn,
+    freezeColumnToStart,
+    freezeColumnToEnd,
+    autoFitColumn,
+    hideColumn,
+    setColumns,
+    setFilter,
+    resetFilter,
+    setColumnsTitle,
+    filterColumn,
+    filterType,
+    filterValue,
+    filterAllColumns,
+    filterContains,
+    filterEquals,
+    filterStartsWith,
+    filterEndsWith,
+    filterGreaterThan,
+    filterGreaterThanOrEqualTo,
+    filterLessThan,
+    filterLessThanOrEqualTo,
+    sunday,
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    hour,
+    minute,
+    loadingText,
+  ]);
 }
 
 /// Behavior of the Enter key when a cell is selected.

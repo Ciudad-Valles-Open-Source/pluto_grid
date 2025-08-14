@@ -9,9 +9,7 @@ const double childHeight = 50;
 const double defaultChildWidth = 200;
 
 class _TestWidgetWrapper extends StatefulWidget {
-  const _TestWidgetWrapper({
-    required this.child,
-  });
+  const _TestWidgetWrapper({required this.child});
 
   final Widget child;
 
@@ -30,19 +28,16 @@ class _TestWidgetWrapperState extends State<_TestWidgetWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: visible,
-      child: widget.child,
-    );
+    return Visibility(visible: visible, child: widget.child);
   }
 }
 
 class _TestLayoutChild extends Container implements PlutoVisibilityLayoutChild {
   _TestLayoutChild({
     this.width = defaultChildWidth,
-    // ignore: unused_element
-    this.startPosition = 0,
-    // ignore: unused_element
+    // ignore: unused_element, unused_element_parameter
+    this.startPosition = 0.0,
+    // ignore: unused_element, unused_element_parameter
     this.keepAlive = false,
   }) : super(width: width, height: childHeight);
 
@@ -141,130 +136,117 @@ void main() {
   });
 
   group('horizontal', () {
-    testWidgets(
-      'scrollController.addListener 가 호출 되어야 한다.',
-      (tester) async {
-        when(scrollPosition.viewportDimension).thenReturn(
-          tester.view.physicalSize.width,
-        );
+    testWidgets('scrollController.addListener 가 호출 되어야 한다.', (tester) async {
+      when(
+        scrollPosition.viewportDimension,
+      ).thenReturn(tester.view.physicalSize.width);
 
-        final children = <PlutoVisibilityLayoutId>[
-          PlutoVisibilityLayoutId(id: 'id', child: createChildren()),
-        ];
+      final children = <PlutoVisibilityLayoutId>[
+        PlutoVisibilityLayoutId(id: 'id', child: createChildren()),
+      ];
 
-        await tester.pumpWidget(buildWidget(
-          scrollController: scrollController,
-          children: children,
-        ));
+      await tester.pumpWidget(
+        buildWidget(scrollController: scrollController, children: children),
+      );
 
-        verify(scrollController.addListener(argThat(isA<Function>())));
-      },
-    );
+      verify(scrollController.addListener(argThat(isA<Function>())));
+    });
 
-    testWidgets(
-      '위젯이 사라지면 scrollController.removeListener 가 호출 되어야 한다.',
-      (tester) async {
-        when(scrollPosition.viewportDimension).thenReturn(
-          tester.view.physicalSize.width,
-        );
+    testWidgets('위젯이 사라지면 scrollController.removeListener 가 호출 되어야 한다.', (
+      tester,
+    ) async {
+      when(
+        scrollPosition.viewportDimension,
+      ).thenReturn(tester.view.physicalSize.width);
 
-        final children = <PlutoVisibilityLayoutId>[
-          PlutoVisibilityLayoutId(id: 'id', child: createChildren()),
-        ];
+      final children = <PlutoVisibilityLayoutId>[
+        PlutoVisibilityLayoutId(id: 'id', child: createChildren()),
+      ];
 
-        await tester.pumpWidget(buildWidget(
-          scrollController: scrollController,
-          children: children,
-        ));
+      await tester.pumpWidget(
+        buildWidget(scrollController: scrollController, children: children),
+      );
 
-        final wrapperState = tester.state(find.byType(_TestWidgetWrapper))
-            as _TestWidgetWrapperState;
+      final wrapperState =
+          tester.state(find.byType(_TestWidgetWrapper))
+              as _TestWidgetWrapperState;
 
-        wrapperState.setVisible(false);
+      wrapperState.setVisible(false);
 
-        await tester.pumpAndSettle();
+      await tester.pumpAndSettle();
 
-        verify(scrollController.removeListener(argThat(isA<Function>())));
-      },
-    );
+      verify(scrollController.removeListener(argThat(isA<Function>())));
+    });
 
-    testWidgets(
-      '_TestLayoutChild 가 노출 되어야 한다.',
-      (tester) async {
-        when(scrollPosition.viewportDimension).thenReturn(
-          tester.view.physicalSize.width,
-        );
+    testWidgets('_TestLayoutChild 가 노출 되어야 한다.', (tester) async {
+      when(
+        scrollPosition.viewportDimension,
+      ).thenReturn(tester.view.physicalSize.width);
 
-        final children = <PlutoVisibilityLayoutId>[
-          PlutoVisibilityLayoutId(id: 'id', child: createChildren()),
-        ];
+      final children = <PlutoVisibilityLayoutId>[
+        PlutoVisibilityLayoutId(id: 'id', child: createChildren()),
+      ];
 
-        await tester.pumpWidget(buildWidget(
-          scrollController: scrollController,
-          children: children,
-        ));
+      await tester.pumpWidget(
+        buildWidget(scrollController: scrollController, children: children),
+      );
 
-        final found = find.byType(_TestLayoutChild);
+      final found = find.byType(_TestLayoutChild);
 
-        final Size size = tester.getSize(found);
+      final Size size = tester.getSize(found);
 
-        final Offset position = tester.getTopLeft(found);
+      final Offset position = tester.getTopLeft(found);
 
-        expect(found, findsOneWidget);
+      expect(found, findsOneWidget);
 
-        expect(size, const Size(defaultChildWidth, childHeight));
+      expect(size, const Size(defaultChildWidth, childHeight));
 
-        expect(position, const Offset(0, 0));
-      },
-    );
+      expect(position, const Offset(0, 0));
+    });
 
-    testWidgets(
-      '_TestLayoutChild 3개, 순서대로 노출 되어야 한다.',
-      (tester) async {
-        when(scrollPosition.viewportDimension).thenReturn(
-          tester.view.physicalSize.width,
-        );
+    testWidgets('_TestLayoutChild 3개, 순서대로 노출 되어야 한다.', (tester) async {
+      when(
+        scrollPosition.viewportDimension,
+      ).thenReturn(tester.view.physicalSize.width);
 
-        final children = <PlutoVisibilityLayoutId>[
-          PlutoVisibilityLayoutId(id: 'id1', child: createChildren()),
-          PlutoVisibilityLayoutId(id: 'id2', child: createChildren()),
-          PlutoVisibilityLayoutId(id: 'id3', child: createChildren()),
-        ];
+      final children = <PlutoVisibilityLayoutId>[
+        PlutoVisibilityLayoutId(id: 'id1', child: createChildren()),
+        PlutoVisibilityLayoutId(id: 'id2', child: createChildren()),
+        PlutoVisibilityLayoutId(id: 'id3', child: createChildren()),
+      ];
 
-        await tester.pumpWidget(buildWidget(
-          scrollController: scrollController,
-          children: children,
-        ));
+      await tester.pumpWidget(
+        buildWidget(scrollController: scrollController, children: children),
+      );
 
-        final found = find.byType(_TestLayoutChild);
+      final found = find.byType(_TestLayoutChild);
 
-        expect(found.at(0), findsOneWidget);
-        expect(
-          tester.getSize(found.at(0)),
-          const Size(defaultChildWidth, childHeight),
-        );
-        expect(tester.getTopLeft(found.at(0)), const Offset(0, 0));
+      expect(found.at(0), findsOneWidget);
+      expect(
+        tester.getSize(found.at(0)),
+        const Size(defaultChildWidth, childHeight),
+      );
+      expect(tester.getTopLeft(found.at(0)), const Offset(0, 0));
 
-        expect(found.at(1), findsOneWidget);
-        expect(
-          tester.getSize(found.at(1)),
-          const Size(defaultChildWidth, childHeight),
-        );
-        expect(
-          tester.getTopLeft(found.at(1)),
-          const Offset(defaultChildWidth * 1, 0),
-        );
+      expect(found.at(1), findsOneWidget);
+      expect(
+        tester.getSize(found.at(1)),
+        const Size(defaultChildWidth, childHeight),
+      );
+      expect(
+        tester.getTopLeft(found.at(1)),
+        const Offset(defaultChildWidth * 1, 0),
+      );
 
-        expect(found.at(2), findsOneWidget);
-        expect(
-          tester.getSize(found.at(2)),
-          const Size(defaultChildWidth, childHeight),
-        );
-        expect(
-          tester.getTopLeft(found.at(2)),
-          const Offset(defaultChildWidth * 2, 0),
-        );
-      },
-    );
+      expect(found.at(2), findsOneWidget);
+      expect(
+        tester.getSize(found.at(2)),
+        const Size(defaultChildWidth, childHeight),
+      );
+      expect(
+        tester.getTopLeft(found.at(2)),
+        const Offset(defaultChildWidth * 2, 0),
+      );
+    });
   });
 }

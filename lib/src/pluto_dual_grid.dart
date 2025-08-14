@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pluto_grid/pluto_grid.dart';
 
-typedef PlutoDualOnSelectedEventCallback = void Function(
-    PlutoDualOnSelectedEvent event);
+typedef PlutoDualOnSelectedEventCallback =
+    void Function(PlutoDualOnSelectedEvent event);
 
 /// In [PlutoDualGrid], set the separation widget between the two grids.
 class PlutoDualGridDivider {
@@ -78,7 +78,7 @@ class PlutoDualGrid extends StatefulWidget {
 }
 
 class PlutoDualGridResizeNotifier extends ChangeNotifier {
-  resize() {
+  void resize() {
     notifyListeners();
   }
 }
@@ -144,11 +144,13 @@ class PlutoDualGridState extends State<PlutoDualGrid> {
           }
 
           if (isGridA) {
-            _streamA =
-                onLoadedEvent.stateManager.eventManager!.listener(handleEvent);
+            _streamA = onLoadedEvent.stateManager.eventManager!.listener(
+              handleEvent,
+            );
           } else {
-            _streamB =
-                onLoadedEvent.stateManager.eventManager!.listener(handleEvent);
+            _streamB = onLoadedEvent.stateManager.eventManager!.listener(
+              handleEvent,
+            );
           }
 
           if (props.onLoaded != null) {
@@ -159,10 +161,7 @@ class PlutoDualGridState extends State<PlutoDualGrid> {
         onSelected: (PlutoGridOnSelectedEvent onSelectedEvent) {
           if (onSelectedEvent.row == null || onSelectedEvent.cell == null) {
             widget.onSelected!(
-              PlutoDualOnSelectedEvent(
-                gridA: null,
-                gridB: null,
-              ),
+              PlutoDualOnSelectedEvent(gridA: null, gridB: null),
             );
           } else {
             widget.onSelected!(
@@ -211,11 +210,7 @@ class PlutoDualGridState extends State<PlutoDualGrid> {
         isLTR: isLTR,
       ),
       children: [
-        _buildGrid(
-          props: widget.gridPropsA,
-          isGridA: true,
-          mode: widget.mode,
-        ),
+        _buildGrid(props: widget.gridPropsA, isGridA: true, mode: widget.mode),
         if (widget.divider.show == true)
           LayoutId(
             id: _PlutoDualGridId.divider,
@@ -228,21 +223,19 @@ class PlutoDualGridState extends State<PlutoDualGrid> {
                     context.findRenderObject() as RenderBox;
 
                 display.offset = object
-                    .globalToLocal(Offset(
-                      details.globalPosition.dx,
-                      details.globalPosition.dy,
-                    ))
+                    .globalToLocal(
+                      Offset(
+                        details.globalPosition.dx,
+                        details.globalPosition.dy,
+                      ),
+                    )
                     .dx;
 
                 resizeNotifier.resize();
               },
             ),
           ),
-        _buildGrid(
-          props: widget.gridPropsB,
-          isGridA: false,
-          mode: widget.mode,
-        ),
+        _buildGrid(props: widget.gridPropsB, isGridA: false, mode: widget.mode),
       ],
     );
   }
@@ -328,11 +321,7 @@ class PlutoDualGridDividerWidgetState
   }
 }
 
-enum _PlutoDualGridId {
-  gridA,
-  gridB,
-  divider,
-}
+enum _PlutoDualGridId { gridA, gridB, divider }
 
 class PlutoDualGridLayoutDelegate extends MultiChildLayoutDelegate {
   PlutoDualGridLayoutDelegate({
@@ -355,15 +344,16 @@ class PlutoDualGridLayoutDelegate extends MultiChildLayoutDelegate {
       maxHeight: size.height,
     );
 
-    final dividerHalf =
-        showDraggableDivider ? PlutoDualGrid.dividerWidth / 2 : 0;
+    final dividerHalf = showDraggableDivider
+        ? PlutoDualGrid.dividerWidth / 2
+        : 0;
 
     final dividerWidth = dividerHalf * 2;
 
     double gridAWidth = showDraggableDivider
         ? display.offset == null
-            ? display.gridAWidth(constrains) - dividerHalf
-            : display.offset! - dividerHalf
+              ? display.gridAWidth(constrains) - dividerHalf
+              : display.offset! - dividerHalf
         : display.gridAWidth(constrains) - dividerHalf;
     double gridBWidth = size.width - gridAWidth - dividerWidth;
 
@@ -388,9 +378,7 @@ class PlutoDualGridLayoutDelegate extends MultiChildLayoutDelegate {
     if (hasChild(_PlutoDualGridId.gridA)) {
       layoutChild(
         _PlutoDualGridId.gridA,
-        BoxConstraints.tight(
-          Size(gridAWidth, size.height),
-        ),
+        BoxConstraints.tight(Size(gridAWidth, size.height)),
       );
 
       final double posX = isLTR ? 0 : gridBWidth + dividerWidth;
@@ -401,9 +389,7 @@ class PlutoDualGridLayoutDelegate extends MultiChildLayoutDelegate {
     if (hasChild(_PlutoDualGridId.divider)) {
       layoutChild(
         _PlutoDualGridId.divider,
-        BoxConstraints.tight(
-          Size(PlutoDualGrid.dividerWidth, size.height),
-        ),
+        BoxConstraints.tight(Size(PlutoDualGrid.dividerWidth, size.height)),
       );
 
       final double posX = isLTR ? gridAWidth : gridBWidth;
@@ -414,9 +400,7 @@ class PlutoDualGridLayoutDelegate extends MultiChildLayoutDelegate {
     if (hasChild(_PlutoDualGridId.gridB)) {
       layoutChild(
         _PlutoDualGridId.gridB,
-        BoxConstraints.tight(
-          Size(gridBWidth, size.height),
-        ),
+        BoxConstraints.tight(Size(gridBWidth, size.height)),
       );
 
       final double posX = isLTR ? gridAWidth + dividerWidth : 0;
@@ -436,10 +420,7 @@ class PlutoDualOnSelectedEvent {
 
   PlutoGridOnSelectedEvent? gridB;
 
-  PlutoDualOnSelectedEvent({
-    this.gridA,
-    this.gridB,
-  });
+  PlutoDualOnSelectedEvent({this.gridA, this.gridB});
 }
 
 abstract class PlutoDualGridDisplay {
@@ -453,9 +434,8 @@ abstract class PlutoDualGridDisplay {
 class PlutoDualGridDisplayRatio implements PlutoDualGridDisplay {
   final double ratio;
 
-  PlutoDualGridDisplayRatio({
-    this.ratio = 0.5,
-  }) : assert(0 < ratio && ratio < 1);
+  PlutoDualGridDisplayRatio({this.ratio = 0.5})
+    : assert(0 < ratio && ratio < 1);
 
   @override
   double? offset;
@@ -470,9 +450,7 @@ class PlutoDualGridDisplayRatio implements PlutoDualGridDisplay {
 class PlutoDualGridDisplayFixedAndExpanded implements PlutoDualGridDisplay {
   final double width;
 
-  PlutoDualGridDisplayFixedAndExpanded({
-    this.width = 206.0,
-  });
+  PlutoDualGridDisplayFixedAndExpanded({this.width = 206.0});
 
   @override
   double? offset;
@@ -487,9 +465,7 @@ class PlutoDualGridDisplayFixedAndExpanded implements PlutoDualGridDisplay {
 class PlutoDualGridDisplayExpandedAndFixed implements PlutoDualGridDisplay {
   final double width;
 
-  PlutoDualGridDisplayExpandedAndFixed({
-    this.width = 206.0,
-  });
+  PlutoDualGridDisplayExpandedAndFixed({this.width = 206.0});
 
   @override
   double? offset;
@@ -613,27 +589,34 @@ class PlutoDualGridProps {
     return PlutoDualGridProps(
       columns: columns ?? this.columns,
       rows: rows ?? this.rows,
-      columnGroups:
-          columnGroups == null ? this.columnGroups : columnGroups.value,
+      columnGroups: columnGroups == null
+          ? this.columnGroups
+          : columnGroups.value,
       onLoaded: onLoaded == null ? this.onLoaded : onLoaded.value,
       onChanged: onChanged == null ? this.onChanged : onChanged.value,
       onSorted: onSorted == null ? this.onSorted : onSorted.value,
-      onRowChecked:
-          onRowChecked == null ? this.onRowChecked : onRowChecked.value,
-      onRowDoubleTap:
-          onRowDoubleTap == null ? this.onRowDoubleTap : onRowDoubleTap.value,
+      onRowChecked: onRowChecked == null
+          ? this.onRowChecked
+          : onRowChecked.value,
+      onRowDoubleTap: onRowDoubleTap == null
+          ? this.onRowDoubleTap
+          : onRowDoubleTap.value,
       onRowSecondaryTap: onRowSecondaryTap == null
           ? this.onRowSecondaryTap
           : onRowSecondaryTap.value,
       onRowsMoved: onRowsMoved == null ? this.onRowsMoved : onRowsMoved.value,
-      onColumnsMoved:
-          onColumnsMoved == null ? this.onColumnsMoved : onColumnsMoved.value,
-      createHeader:
-          createHeader == null ? this.createHeader : createHeader.value,
-      createFooter:
-          createFooter == null ? this.createFooter : createFooter.value,
-      noRowsWidget:
-          noRowsWidget == null ? this.noRowsWidget : noRowsWidget.value,
+      onColumnsMoved: onColumnsMoved == null
+          ? this.onColumnsMoved
+          : onColumnsMoved.value,
+      createHeader: createHeader == null
+          ? this.createHeader
+          : createHeader.value,
+      createFooter: createFooter == null
+          ? this.createFooter
+          : createFooter.value,
+      noRowsWidget: noRowsWidget == null
+          ? this.noRowsWidget
+          : noRowsWidget.value,
       rowColorCallback: rowColorCallback == null
           ? this.rowColorCallback
           : rowColorCallback.value,

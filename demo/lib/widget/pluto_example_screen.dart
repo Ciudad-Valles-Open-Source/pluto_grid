@@ -12,13 +12,13 @@ class PlutoExampleScreen extends StatelessWidget {
   final Widget? body;
 
   const PlutoExampleScreen({
-    Key? key,
+    super.key,
     this.title,
     this.topTitle,
     this.topContents,
     this.topButtons,
     this.body,
-  }) : super(key: key);
+  });
 
   AlertDialog reportingDialog(BuildContext context) {
     return AlertDialog(
@@ -26,16 +26,12 @@ class PlutoExampleScreen extends StatelessWidget {
       content: const SizedBox(
         width: 300,
         child: Text(
-            'Have you found the problem? Or do you have any questions?\n(Selecting Yes will open the Github issue.)'),
+          'Have you found the problem? Or do you have any questions?\n(Selecting Yes will open the Github issue.)',
+        ),
       ),
       actions: [
         TextButton(
-          child: const Text(
-            'No',
-            style: TextStyle(
-              color: Colors.deepOrange,
-            ),
-          ),
+          child: const Text('No', style: TextStyle(color: Colors.deepOrange)),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -53,9 +49,7 @@ class PlutoExampleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('$title - PlutoGrid'),
-      ),
+      appBar: AppBar(title: Text('$title - PlutoGrid')),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (ctx, size) {
@@ -64,9 +58,7 @@ class PlutoExampleScreen extends StatelessWidget {
               child: Container(
                 width: size.maxWidth,
                 height: size.maxHeight,
-                constraints: const BoxConstraints(
-                  minHeight: 750,
-                ),
+                constraints: const BoxConstraints(minHeight: 750),
                 padding: const EdgeInsets.all(30),
                 child: Column(
                   children: [
@@ -75,12 +67,8 @@ class PlutoExampleScreen extends StatelessWidget {
                       buttons: topButtons,
                       children: topContents,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Expanded(
-                      child: body!,
-                    ),
+                    const SizedBox(height: 10),
+                    Expanded(child: body!),
                   ],
                 ),
               ),
@@ -90,16 +78,10 @@ class PlutoExampleScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showDialog<void>(
-            context: context,
-            builder: reportingDialog,
-          );
+          showDialog<void>(context: context, builder: reportingDialog);
         },
         backgroundColor: const Color(0xFF33BDE5),
-        child: const FaIcon(
-          FontAwesomeIcons.exclamation,
-          color: Colors.white,
-        ),
+        child: const FaIcon(FontAwesomeIcons.exclamation, color: Colors.white),
       ),
     );
   }

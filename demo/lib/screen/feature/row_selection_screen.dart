@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class RowSelectionScreen extends StatefulWidget {
   static const routeName = 'feature/row-selection';
 
-  const RowSelectionScreen({Key? key}) : super(key: key);
+  const RowSelectionScreen({super.key});
 
   @override
   _RowSelectionScreenState createState() => _RowSelectionScreenState();
@@ -46,29 +46,28 @@ class _RowSelectionScreenState extends State<RowSelectionScreen> {
     }
 
     await showDialog<void>(
-        context: context,
-        builder: (BuildContext ctx) {
-          return Dialog(
-            child: LayoutBuilder(
-              builder: (ctx, size) {
-                return Container(
-                  padding: const EdgeInsets.all(15),
-                  width: 400,
-                  height: 500,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(value),
-                      ],
-                    ),
+      context: context,
+      builder: (BuildContext ctx) {
+        return Dialog(
+          child: LayoutBuilder(
+            builder: (ctx, size) {
+              return Container(
+                padding: const EdgeInsets.all(15),
+                width: 400,
+                height: 500,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [Text(value)],
                   ),
-                );
-              },
-            ),
-          );
-        });
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -78,7 +77,8 @@ class _RowSelectionScreenState extends State<RowSelectionScreen> {
       topTitle: 'Row selection',
       topContents: const [
         Text(
-            'In Row selection mode, Shift + tap or long tap and then move or Control + tap to select a row.'),
+          'In Row selection mode, Shift + tap or long tap and then move or Control + tap to select a row.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

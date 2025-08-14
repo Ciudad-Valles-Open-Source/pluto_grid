@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class ColumnFooterScreen extends StatefulWidget {
   static const routeName = 'feature/column-footer';
 
-  const ColumnFooterScreen({Key? key}) : super(key: key);
+  const ColumnFooterScreen({super.key});
 
   @override
   _ColumnFooterScreenState createState() => _ColumnFooterScreenState();
@@ -77,10 +77,7 @@ class _ColumnFooterScreenState extends State<ColumnFooterScreen> {
             format: '#,###.###',
             alignment: Alignment.center,
             titleSpanBuilder: (text) {
-              return [
-                const TextSpan(text: 'Average : '),
-                TextSpan(text: text),
-              ];
+              return [const TextSpan(text: 'Average : '), TextSpan(text: text)];
             },
           );
         },
@@ -97,10 +94,7 @@ class _ColumnFooterScreenState extends State<ColumnFooterScreen> {
             format: '#,###',
             alignment: Alignment.center,
             titleSpanBuilder: (text) {
-              return [
-                const TextSpan(text: 'Min : '),
-                TextSpan(text: text),
-              ];
+              return [const TextSpan(text: 'Min : '), TextSpan(text: text)];
             },
           );
         },
@@ -117,10 +111,7 @@ class _ColumnFooterScreenState extends State<ColumnFooterScreen> {
             format: '#,###',
             alignment: Alignment.center,
             titleSpanBuilder: (text) {
-              return [
-                const TextSpan(text: 'Max : '),
-                TextSpan(text: text),
-              ];
+              return [const TextSpan(text: 'Max : '), TextSpan(text: text)];
             },
           );
         },
@@ -151,9 +142,11 @@ class _ColumnFooterScreenState extends State<ColumnFooterScreen> {
       topTitle: 'Column footer',
       topContents: const [
         Text(
-            'Implement PlutoColumn \'s footerRenderer callback to display information such as sum, average, min, max, etc.'),
+          'Implement PlutoColumn \'s footerRenderer callback to display information such as sum, average, min, max, etc.',
+        ),
         Text(
-            'You can easily implement it with the built-in PlutoAggregateColumnFooter plugin widget, or return the widget you want as a callback return value.'),
+          'You can easily implement it with the built-in PlutoAggregateColumnFooter plugin widget, or return the widget you want as a callback return value.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

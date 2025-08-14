@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class EditingStateScreen extends StatefulWidget {
   static const routeName = 'feature/editing-state';
 
-  const EditingStateScreen({Key? key}) : super(key: key);
+  const EditingStateScreen({super.key});
 
   @override
   _EditingStateScreenState createState() => _EditingStateScreenState();
@@ -61,10 +61,7 @@ class _EditingStateScreenState extends State<EditingStateScreen> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                Switch(
-                  value: autoEditing,
-                  onChanged: toggleAutoEditing,
-                ),
+                Switch(value: autoEditing, onChanged: toggleAutoEditing),
                 const Text('autoEditing'),
               ],
             ),
@@ -77,8 +74,9 @@ class _EditingStateScreenState extends State<EditingStateScreen> {
                 print(event);
               },
               onLoaded: (PlutoGridOnLoadedEvent event) {
-                event.stateManager
-                    .setSelectingMode(PlutoGridSelectingMode.cell);
+                event.stateManager.setSelectingMode(
+                  PlutoGridSelectingMode.cell,
+                );
 
                 stateManager = event.stateManager;
               },

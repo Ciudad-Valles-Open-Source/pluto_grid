@@ -10,7 +10,7 @@ import '../../widget/pluto_example_screen.dart';
 class AddRowsAsynchronouslyScreen extends StatefulWidget {
   static const routeName = 'feature/add-rows-asynchronously';
 
-  const AddRowsAsynchronouslyScreen({Key? key}) : super(key: key);
+  const AddRowsAsynchronouslyScreen({super.key});
 
   @override
   _AddRowsAsynchronouslyScreenState createState() =>
@@ -37,10 +37,9 @@ class _AddRowsAsynchronouslyScreenState
       /// Initialize the rows asynchronously through the initializeRowsAsync method
       /// Add rows to stateManager.refRows.
       /// And disable the loading screen.
-      PlutoGridStateManager.initializeRowsAsync(
-        columns,
-        fetchedRows,
-      ).then((value) {
+      PlutoGridStateManager.initializeRowsAsync(columns, fetchedRows).then((
+        value,
+      ) {
         stateManager.refRows.addAll(value);
 
         /// In this example,
@@ -102,11 +101,14 @@ class _AddRowsAsynchronouslyScreenState
       topTitle: 'Add rows asynchronously',
       topContents: const [
         Text(
-            'The grid can freeze if there are many rows at the start of the grid.'),
+          'The grid can freeze if there are many rows at the start of the grid.',
+        ),
         Text(
-            'When a row is first set up or a new row is added, the PlutoGridStateManager.initializeRows method is executed and the necessary settings are made for the grid.'),
+          'When a row is first set up or a new row is added, the PlutoGridStateManager.initializeRows method is executed and the necessary settings are made for the grid.',
+        ),
         Text(
-            'In the example, an empty row is provided at the start of the grid, and the row is set asynchronously and reflected in the grid.'),
+          'In the example, an empty row is provided at the start of the grid, and the row is set asynchronously and reflected in the grid.',
+        ),
         Text('See the example code for details.'),
       ],
       topButtons: [

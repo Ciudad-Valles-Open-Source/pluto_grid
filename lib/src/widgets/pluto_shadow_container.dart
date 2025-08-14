@@ -20,9 +20,7 @@ class PlutoShadowContainer extends StatelessWidget {
     required this.width,
     required this.height,
     required this.child,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 10,
-    ),
+    this.padding = const EdgeInsets.symmetric(horizontal: 10),
     this.backgroundColor = Colors.white,
     this.borderColor = const Color(0xFFA1A5AE),
     this.alignment = Alignment.centerLeft,
@@ -36,12 +34,10 @@ class PlutoShadowContainer extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor,
-          border: Border.all(
-            color: borderColor,
-          ),
+          border: Border.all(color: borderColor),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withValues(alpha: 0.5),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -50,10 +46,7 @@ class PlutoShadowContainer extends StatelessWidget {
         ),
         child: Padding(
           padding: padding,
-          child: Align(
-            alignment: alignment,
-            child: child,
-          ),
+          child: Align(alignment: alignment, child: child),
         ),
       ),
     );

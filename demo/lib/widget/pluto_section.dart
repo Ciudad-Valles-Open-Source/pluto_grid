@@ -10,12 +10,12 @@ class PlutoSection extends StatelessWidget {
   final Color? fontColor;
 
   const PlutoSection({
-    Key? key,
+    super.key,
     this.title,
     this.child,
     this.color,
     this.fontColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,7 @@ class PlutoSection extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(
-              bottom: 20,
-            ),
+            padding: const EdgeInsets.only(bottom: 20),
             child: Text(
               title!,
               style: TextStyle(

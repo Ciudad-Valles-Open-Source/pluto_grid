@@ -9,7 +9,7 @@ import '../../widget/pluto_example_screen.dart';
 class RowGroupScreen extends StatefulWidget {
   static const routeName = 'feature/row-group';
 
-  const RowGroupScreen({Key? key}) : super(key: key);
+  const RowGroupScreen({super.key});
 
   @override
   _RowGroupScreenState createState() => _RowGroupScreenState();
@@ -59,8 +59,9 @@ class _RowGroupScreenState extends State<RowGroupScreen> {
         field: 'files',
         type: PlutoColumnType.text(),
         renderer: (c) {
-          IconData icon =
-              c.row.type.isGroup ? Icons.folder : Icons.file_present;
+          IconData icon = c.row.type.isGroup
+              ? Icons.folder
+              : Icons.file_present;
           return Row(
             children: [
               Icon(icon, size: 18, color: Colors.grey),
@@ -76,58 +77,67 @@ class _RowGroupScreenState extends State<RowGroupScreen> {
       PlutoRow(
         cells: {'files': PlutoCell(value: 'PlutoGrid')},
         type: PlutoRowType.group(
-            children: FilteredList<PlutoRow>(
-          initialList: [
-            PlutoRow(
-              cells: {'files': PlutoCell(value: 'lib')},
-              type: PlutoRowType.group(
-                children: FilteredList<PlutoRow>(
-                  initialList: [
-                    PlutoRow(
-                      cells: {'files': PlutoCell(value: 'src')},
-                      type: PlutoRowType.group(
+          children: FilteredList<PlutoRow>(
+            initialList: [
+              PlutoRow(
+                cells: {'files': PlutoCell(value: 'lib')},
+                type: PlutoRowType.group(
+                  children: FilteredList<PlutoRow>(
+                    initialList: [
+                      PlutoRow(
+                        cells: {'files': PlutoCell(value: 'src')},
+                        type: PlutoRowType.group(
                           children: FilteredList<PlutoRow>(
-                        initialList: [
-                          PlutoRow(cells: {
-                            'files': PlutoCell(value: 'pluto_grid.dart')
-                          }),
-                          PlutoRow(cells: {
-                            'files': PlutoCell(value: 'pluto_dual_grid.dart')
-                          }),
-                        ],
-                      )),
-                    ),
-                  ],
+                            initialList: [
+                              PlutoRow(
+                                cells: {
+                                  'files': PlutoCell(value: 'pluto_grid.dart'),
+                                },
+                              ),
+                              PlutoRow(
+                                cells: {
+                                  'files': PlutoCell(
+                                    value: 'pluto_dual_grid.dart',
+                                  ),
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            PlutoRow(
-              cells: {'files': PlutoCell(value: 'test')},
-              type: PlutoRowType.group(
-                children: FilteredList<PlutoRow>(
-                  initialList: [
-                    PlutoRow(
-                      cells: {
-                        'files': PlutoCell(value: 'pluto_grid_test.dart')
-                      },
-                    ),
-                  ],
+              PlutoRow(
+                cells: {'files': PlutoCell(value: 'test')},
+                type: PlutoRowType.group(
+                  children: FilteredList<PlutoRow>(
+                    initialList: [
+                      PlutoRow(
+                        cells: {
+                          'files': PlutoCell(value: 'pluto_grid_test.dart'),
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-        )),
+            ],
+          ),
+        ),
       ),
       PlutoRow(
         cells: {'files': PlutoCell(value: 'PlutoMenuBar')},
         type: PlutoRowType.group(
-            children: FilteredList<PlutoRow>(
-          initialList: [
-            PlutoRow(
-              cells: {'files': PlutoCell(value: 'pluto_menu_bar.dart')},
-            ),
-          ],
-        )),
+          children: FilteredList<PlutoRow>(
+            initialList: [
+              PlutoRow(
+                cells: {'files': PlutoCell(value: 'pluto_menu_bar.dart')},
+              ),
+            ],
+          ),
+        ),
       ),
     ]);
   }
@@ -137,9 +147,7 @@ class _RowGroupScreenState extends State<RowGroupScreen> {
     return PlutoExampleScreen(
       title: 'Row group',
       topTitle: 'Row group',
-      topContents: const [
-        Text('Grouping rows in a column or tree structure.'),
-      ],
+      topContents: const [Text('Grouping rows in a column or tree structure.')],
       topButtons: [
         PlutoExampleButton(
           url:
@@ -152,16 +160,11 @@ class _RowGroupScreenState extends State<RowGroupScreen> {
           columns: columnsA,
           rows: rowsA,
           configuration: const PlutoGridConfiguration(
-            style: PlutoGridStyleConfig(
-              cellColorGroupedRow: Color(0x80F6F6F6),
-            ),
+            style: PlutoGridStyleConfig(cellColorGroupedRow: Color(0x80F6F6F6)),
           ),
           onLoaded: (e) => e.stateManager.setRowGroup(
             PlutoRowGroupByColumnDelegate(
-              columns: [
-                columnsA[0],
-                columnsA[1],
-              ],
+              columns: [columnsA[0], columnsA[1]],
               showFirstExpandableIcon: false,
             ),
           ),
@@ -170,20 +173,20 @@ class _RowGroupScreenState extends State<RowGroupScreen> {
           columns: columnsB,
           rows: rowsB,
           configuration: const PlutoGridConfiguration(
-            style: PlutoGridStyleConfig(
-              cellColorGroupedRow: Color(0x80F6F6F6),
-            ),
+            style: PlutoGridStyleConfig(cellColorGroupedRow: Color(0x80F6F6F6)),
             columnSize: PlutoGridColumnSizeConfig(
               autoSizeMode: PlutoAutoSizeMode.equal,
             ),
           ),
           onLoaded: (e) {
-            e.stateManager.setRowGroup(PlutoRowGroupTreeDelegate(
-              resolveColumnDepth: (column) =>
-                  e.stateManager.columnIndex(column),
-              showText: (cell) => true,
-              showFirstExpandableIcon: true,
-            ));
+            e.stateManager.setRowGroup(
+              PlutoRowGroupTreeDelegate(
+                resolveColumnDepth: (column) =>
+                    e.stateManager.columnIndex(column),
+                showText: (cell) => true,
+                showFirstExpandableIcon: true,
+              ),
+            );
           },
         ),
       ),

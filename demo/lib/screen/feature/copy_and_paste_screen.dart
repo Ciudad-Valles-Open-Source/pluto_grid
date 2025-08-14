@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class CopyAndPasteScreen extends StatefulWidget {
   static const routeName = 'feature/copy-and-paste';
 
-  const CopyAndPasteScreen({Key? key}) : super(key: key);
+  const CopyAndPasteScreen({super.key});
 
   @override
   _CopyAndPasteScreenState createState() => _CopyAndPasteScreenState();
@@ -61,7 +61,8 @@ class _CopyAndPasteScreenState extends State<CopyAndPasteScreen> {
       topTitle: 'Copy and Paste',
       topContents: const [
         Text(
-            'Copy and paste are operated depending on the cell and row selection status.'),
+          'Copy and paste are operated depending on the cell and row selection status.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

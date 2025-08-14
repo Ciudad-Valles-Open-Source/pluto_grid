@@ -6,15 +6,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PlutoGrid Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: const PlutoGridExamplePage(),
     );
   }
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
 //
 /// For more examples, go to the demo web link on the github below.
 class PlutoGridExamplePage extends StatefulWidget {
-  const PlutoGridExamplePage({Key? key}) : super(key: key);
+  const PlutoGridExamplePage({super.key});
 
   @override
   State<PlutoGridExamplePage> createState() => _PlutoGridExamplePageState();
@@ -32,35 +30,15 @@ class PlutoGridExamplePage extends StatefulWidget {
 
 class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
   final List<PlutoColumn> columns = <PlutoColumn>[
-    PlutoColumn(
-      title: 'Id',
-      field: 'id',
-      type: PlutoColumnType.text(),
-    ),
-    PlutoColumn(
-      title: 'Name',
-      field: 'name',
-      type: PlutoColumnType.text(),
-    ),
-    PlutoColumn(
-      title: 'Age',
-      field: 'age',
-      type: PlutoColumnType.number(),
-    ),
+    PlutoColumn(title: 'Id', field: 'id', type: PlutoColumnType.text()),
+    PlutoColumn(title: 'Name', field: 'name', type: PlutoColumnType.text()),
+    PlutoColumn(title: 'Age', field: 'age', type: PlutoColumnType.number()),
     PlutoColumn(
       title: 'Role',
       field: 'role',
-      type: PlutoColumnType.select(<String>[
-        'Programmer',
-        'Designer',
-        'Owner',
-      ]),
+      type: PlutoColumnType.select(<String>['Programmer', 'Designer', 'Owner']),
     ),
-    PlutoColumn(
-      title: 'Joined',
-      field: 'joined',
-      type: PlutoColumnType.date(),
-    ),
+    PlutoColumn(title: 'Joined', field: 'joined', type: PlutoColumnType.date()),
     PlutoColumn(
       title: 'Working time',
       field: 'working_time',
@@ -132,10 +110,13 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
   final List<PlutoColumnGroup> columnGroups = [
     PlutoColumnGroup(title: 'Id', fields: ['id'], expandedColumn: true),
     PlutoColumnGroup(title: 'User information', fields: ['name', 'age']),
-    PlutoColumnGroup(title: 'Status', children: [
-      PlutoColumnGroup(title: 'A', fields: ['role'], expandedColumn: true),
-      PlutoColumnGroup(title: 'Etc.', fields: ['joined', 'working_time']),
-    ]),
+    PlutoColumnGroup(
+      title: 'Status',
+      children: [
+        PlutoColumnGroup(title: 'A', fields: ['role'], expandedColumn: true),
+        PlutoColumnGroup(title: 'Etc.', fields: ['joined', 'working_time']),
+      ],
+    ),
   ];
 
   /// [PlutoGridStateManager] has many methods and properties to dynamically manipulate the grid.

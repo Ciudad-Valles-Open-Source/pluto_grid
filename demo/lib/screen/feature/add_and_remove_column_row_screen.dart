@@ -10,7 +10,7 @@ import '../../widget/pluto_example_screen.dart';
 class AddAndRemoveColumnRowScreen extends StatefulWidget {
   static const routeName = 'add-and-remove-column-row';
 
-  const AddAndRemoveColumnRowScreen({Key? key}) : super(key: key);
+  const AddAndRemoveColumnRowScreen({super.key});
 
   @override
   _AddAndRemoveColumnRowScreenState createState() =>
@@ -42,56 +42,61 @@ class _AddAndRemoveColumnRowScreenState
         type: PlutoColumnType.text(),
         readOnly: true,
         checkReadOnly: checkReadOnly,
-        titleSpan: const TextSpan(children: [
-          WidgetSpan(
-              child: Icon(
-            Icons.lock_outlined,
-            size: 17,
-          )),
-          TextSpan(text: 'Id'),
-        ]),
+        titleSpan: const TextSpan(
+          children: [
+            WidgetSpan(child: Icon(Icons.lock_outlined, size: 17)),
+            TextSpan(text: 'Id'),
+          ],
+        ),
       ),
-      PlutoColumn(
-        title: 'Name',
-        field: 'name',
-        type: PlutoColumnType.text(),
-      ),
+      PlutoColumn(title: 'Name', field: 'name', type: PlutoColumnType.text()),
       PlutoColumn(
         title: 'Status',
         field: 'status',
-        type: PlutoColumnType.select(<String>[
-          'saved',
-          'edited',
-          'created',
-        ]),
+        type: PlutoColumnType.select(<String>['saved', 'edited', 'created']),
         enableEditingMode: false,
         frozen: PlutoColumnFrozen.end,
-        titleSpan: const TextSpan(children: [
-          WidgetSpan(
-              child: Icon(
-            Icons.lock,
-            size: 17,
-          )),
-          TextSpan(text: 'Status'),
-        ]),
+        titleSpan: const TextSpan(
+          children: [
+            WidgetSpan(child: Icon(Icons.lock, size: 17)),
+            TextSpan(text: 'Status'),
+          ],
+        ),
         renderer: (rendererContext) {
-          Color textColor = Colors.black;
-
-          if (rendererContext.cell.value == 'saved') {
-            textColor = Colors.green;
-          } else if (rendererContext.cell.value == 'edited') {
-            textColor = Colors.red;
-          } else if (rendererContext.cell.value == 'created') {
-            textColor = Colors.blue;
+          switch (rendererContext.cell.value) {
+            case 'saved':
+              return Text(
+                rendererContext.cell.value.toString(),
+                style: TextStyle(
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            case 'edited':
+              return Text(
+                rendererContext.cell.value.toString(),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            case 'created':
+              return Text(
+                rendererContext.cell.value.toString(),
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            default:
+              return Text(
+                rendererContext.cell.value.toString(),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
           }
-
-          return Text(
-            rendererContext.cell.value.toString(),
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          );
         },
       ),
     ]);
@@ -106,21 +111,27 @@ class _AddAndRemoveColumnRowScreenState
     ]);
 
     rows.addAll([
-      PlutoRow(cells: {
-        'id': PlutoCell(value: 'user1'),
-        'name': PlutoCell(value: 'user name 1'),
-        'status': PlutoCell(value: 'saved'),
-      }),
-      PlutoRow(cells: {
-        'id': PlutoCell(value: 'user2'),
-        'name': PlutoCell(value: 'user name 2'),
-        'status': PlutoCell(value: 'saved'),
-      }),
-      PlutoRow(cells: {
-        'id': PlutoCell(value: 'user3'),
-        'name': PlutoCell(value: 'user name 3'),
-        'status': PlutoCell(value: 'saved'),
-      }),
+      PlutoRow(
+        cells: {
+          'id': PlutoCell(value: 'user1'),
+          'name': PlutoCell(value: 'user name 1'),
+          'status': PlutoCell(value: 'saved'),
+        },
+      ),
+      PlutoRow(
+        cells: {
+          'id': PlutoCell(value: 'user2'),
+          'name': PlutoCell(value: 'user name 2'),
+          'status': PlutoCell(value: 'saved'),
+        },
+      ),
+      PlutoRow(
+        cells: {
+          'id': PlutoCell(value: 'user3'),
+          'name': PlutoCell(value: 'user name 3'),
+          'status': PlutoCell(value: 'saved'),
+        },
+      ),
     ]);
   }
 
@@ -132,9 +143,11 @@ class _AddAndRemoveColumnRowScreenState
       topContents: const [
         Text('You can add or delete columns, rows.'),
         Text(
-            'Remove selected Rows is only deleted if there is a row selected in Row mode.'),
+          'Remove selected Rows is only deleted if there is a row selected in Row mode.',
+        ),
         Text(
-            'If you are adding a new row, you can edit the cell regardless of the readOnly of column.'),
+          'If you are adding a new row, you can edit the cell regardless of the readOnly of column.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(
@@ -165,10 +178,7 @@ class _AddAndRemoveColumnRowScreenState
 }
 
 class _Header extends StatefulWidget {
-  const _Header({
-    required this.stateManager,
-    Key? key,
-  }) : super(key: key);
+  const _Header({required this.stateManager});
 
   final PlutoGridStateManager stateManager;
 
@@ -276,8 +286,9 @@ class _HeaderState extends State<_Header> {
   }
 
   void handleFiltering() {
-    widget.stateManager
-        .setShowColumnFilter(!widget.stateManager.showColumnFilter);
+    widget.stateManager.setShowColumnFilter(
+      !widget.stateManager.showColumnFilter,
+    );
   }
 
   void setGridSelectingMode(PlutoGridSelectingMode? mode) {
@@ -304,8 +315,9 @@ class _HeaderState extends State<_Header> {
             DropdownButtonHideUnderline(
               child: DropdownButton(
                 value: addCount,
-                items:
-                    [1, 5, 10, 50, 100].map<DropdownMenuItem<int>>((int count) {
+                items: [1, 5, 10, 50, 100].map<DropdownMenuItem<int>>((
+                  int count,
+                ) {
                   final color = addCount == count ? Colors.blue : null;
 
                   return DropdownMenuItem<int>(
@@ -355,18 +367,19 @@ class _HeaderState extends State<_Header> {
               child: DropdownButton(
                 value: gridSelectingMode,
                 items: PlutoGridSelectingMode.values
-                    .map<DropdownMenuItem<PlutoGridSelectingMode>>(
-                        (PlutoGridSelectingMode item) {
-                  final color = gridSelectingMode == item ? Colors.blue : null;
+                    .map<DropdownMenuItem<PlutoGridSelectingMode>>((
+                      PlutoGridSelectingMode item,
+                    ) {
+                      final color = gridSelectingMode == item
+                          ? Colors.blue
+                          : null;
 
-                  return DropdownMenuItem<PlutoGridSelectingMode>(
-                    value: item,
-                    child: Text(
-                      item.name,
-                      style: TextStyle(color: color),
-                    ),
-                  );
-                }).toList(),
+                      return DropdownMenuItem<PlutoGridSelectingMode>(
+                        value: item,
+                        child: Text(item.name, style: TextStyle(color: color)),
+                      );
+                    })
+                    .toList(),
                 onChanged: (PlutoGridSelectingMode? mode) {
                   setGridSelectingMode(mode);
                 },

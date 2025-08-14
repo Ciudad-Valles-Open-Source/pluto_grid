@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class RowMovingScreen extends StatefulWidget {
   static const routeName = 'feature/row-moving';
 
-  const RowMovingScreen({Key? key}) : super(key: key);
+  const RowMovingScreen({super.key});
 
   @override
   _RowMovingScreenState createState() => _RowMovingScreenState();
@@ -65,11 +65,13 @@ class _RowMovingScreenState extends State<RowMovingScreen> {
       topContents: const [
         Text('You can move the row by dragging it.'),
         Text(
-            'If enableRowDrag of the column property is set to true, an icon that can be dragged to the left of the cell value is created.'),
+          'If enableRowDrag of the column property is set to true, an icon that can be dragged to the left of the cell value is created.',
+        ),
         Text('You can drag the icon to move the row up and down.'),
         Text('In Selecting Row mode, you can move all the selected rows.'),
         Text(
-            'You can receive the moved rows passed to the onRowsMoved callback.'),
+          'You can receive the moved rows passed to the onRowsMoved callback.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

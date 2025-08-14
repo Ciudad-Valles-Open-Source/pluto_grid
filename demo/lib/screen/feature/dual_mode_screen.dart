@@ -11,7 +11,7 @@ import '../../widget/pluto_example_screen.dart';
 class DualModeScreen extends StatefulWidget {
   static const routeName = 'feature/dual-mode';
 
-  const DualModeScreen({Key? key}) : super(key: key);
+  const DualModeScreen({super.key});
 
   @override
   _DualModeScreenState createState() => _DualModeScreenState();
@@ -64,10 +64,9 @@ class _DualModeScreenState extends State<DualModeScreen> {
       ),
     ]);
 
-    gridARows.addAll(DummyData.rowsByColumns(
-      length: 30,
-      columns: gridAColumns,
-    ));
+    gridARows.addAll(
+      DummyData.rowsByColumns(length: 30, columns: gridAColumns),
+    );
 
     gridBColumns.addAll([
       PlutoColumn(
@@ -76,16 +75,8 @@ class _DualModeScreenState extends State<DualModeScreen> {
         type: PlutoColumnType.text(),
         enableRowChecked: true,
       ),
-      PlutoColumn(
-        title: 'Date',
-        field: 'date',
-        type: PlutoColumnType.date(),
-      ),
-      PlutoColumn(
-        title: 'Time',
-        field: 'time',
-        type: PlutoColumnType.time(),
-      ),
+      PlutoColumn(title: 'Date', field: 'date', type: PlutoColumnType.date()),
+      PlutoColumn(title: 'Time', field: 'time', type: PlutoColumnType.time()),
     ]);
   }
 
@@ -134,10 +125,12 @@ class _DualModeScreenState extends State<DualModeScreen> {
       topTitle: 'Dual mode',
       topContents: const [
         Text(
-            'Place the grid on the left and right and move or edit with the keyboard.'),
+          'Place the grid on the left and right and move or edit with the keyboard.',
+        ),
         Text('Refer to the display property for the width of the grid.'),
         Text(
-            'This is an example in which the right list is randomly generated whenever the current row of the left grid changes.'),
+          'This is an example in which the right list is randomly generated whenever the current row of the left grid changes.',
+        ),
       ],
       topButtons: [
         PlutoExampleButton(

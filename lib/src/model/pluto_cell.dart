@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pluto_grid/pluto_grid.dart';
 
 class PlutoCell {
-  PlutoCell({
-    dynamic value,
-    Key? key,
-  })  : _key = key ?? UniqueKey(),
-        _value = value;
+  PlutoCell({dynamic value, Key? key})
+    : _key = key ?? UniqueKey(),
+      _value = value;
 
   final Key _key;
 
@@ -94,15 +92,16 @@ class PlutoCell {
     _value = _column!.type.applyFormat(_value);
 
     if (_column!.type is PlutoColumnTypeWithNumberFormat) {
-      _value =
-          (_column!.type as PlutoColumnTypeWithNumberFormat).toNumber(_value);
+      _value = (_column!.type as PlutoColumnTypeWithNumberFormat).toNumber(
+        _value,
+      );
     }
 
     _needToApplyFormatOnInit = false;
   }
 }
 
-_assertUnInitializedCell(bool flag) {
+void _assertUnInitializedCell(bool flag) {
   assert(
     flag,
     'PlutoCell is not initialized.'

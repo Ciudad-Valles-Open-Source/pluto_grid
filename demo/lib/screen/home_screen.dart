@@ -51,7 +51,7 @@ import 'feature/value_formatter_screen.dart';
 class HomeScreen extends StatelessWidget {
   static const routeName = '/';
 
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +71,7 @@ class HomeScreen extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xFF2E4370),
-                          Color(0xFF33C1E8),
-                        ],
+                        colors: [Color(0xFF2E4370), Color(0xFF33C1E8)],
                       ),
                     ),
                     child: SingleChildScrollView(
@@ -82,12 +79,7 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(
-                              30,
-                              100,
-                              30,
-                              0,
-                            ),
+                            padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
                             child: Align(
                               alignment: Alignment.center,
                               child: PlutoGridTitle(
@@ -96,17 +88,13 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 30,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: const PlutoTextColorAnimation(
                               text: 'The DataGrid for Flutter.',
                               fontSize: 20,
                             ),
                           ),
-                          const SizedBox(
-                            height: 50,
-                          ),
+                          const SizedBox(height: 50),
                           Center(
                             child: Column(
                               children: [
@@ -115,7 +103,8 @@ class HomeScreen extends StatelessWidget {
                                   color: Colors.white,
                                   onPressed: () {
                                     launchUrl(
-                                        'https://pub.dev/packages/pluto_grid');
+                                      'https://pub.dev/packages/pluto_grid',
+                                    );
                                   },
                                 ),
                                 const Text(
@@ -136,9 +125,7 @@ class HomeScreen extends StatelessWidget {
                             fontColor: Colors.white,
                             child: PlutoContributors(),
                           ),
-                          const SizedBox(
-                            height: 50,
-                          ),
+                          const SizedBox(height: 50),
                           Center(
                             child: Column(
                               children: [
@@ -147,7 +134,8 @@ class HomeScreen extends StatelessWidget {
                                   color: Colors.white,
                                   onPressed: () {
                                     launchUrl(
-                                        'https://github.com/bosskmk/pluto_grid');
+                                      'https://github.com/bosskmk/pluto_grid',
+                                    );
                                   },
                                 ),
                                 const Text(
@@ -157,16 +145,15 @@ class HomeScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 50,
-                          ),
+                          const SizedBox(height: 50),
                           Center(
                             child: MouseRegion(
                               cursor: SystemMouseCursors.click,
                               child: GestureDetector(
                                 onTap: () {
                                   launchUrl(
-                                      'https://www.buymeacoffee.com/manki');
+                                    'https://www.buymeacoffee.com/manki',
+                                  );
                                 },
                                 child: Image.asset(
                                   'assets/images/buy_me_a_coffee.png',
@@ -175,9 +162,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 100,
-                          ),
+                          const SizedBox(height: 100),
                         ],
                       ),
                     ),
@@ -193,17 +178,11 @@ class HomeScreen extends StatelessWidget {
 }
 
 class PlutoFeatures extends StatelessWidget {
-  final Icon newIcon = const Icon(
-    Icons.fiber_new,
-    color: Colors.deepOrange,
-  );
+  final Icon newIcon = const Icon(Icons.fiber_new, color: Colors.deepOrange);
 
-  final Icon updateIcon = const Icon(
-    Icons.update,
-    color: Colors.deepOrange,
-  );
+  final Icon updateIcon = const Icon(Icons.update, color: Colors.deepOrange);
 
-  const PlutoFeatures({Key? key}) : super(key: key);
+  const PlutoFeatures({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -451,7 +430,9 @@ class PlutoFeatures extends StatelessWidget {
             description: 'You can add or delete columns, rows.',
             onTapLiveDemo: () {
               Navigator.pushNamed(
-                  context, AddAndRemoveColumnRowScreen.routeName);
+                context,
+                AddAndRemoveColumnRowScreen.routeName,
+              );
             },
           ),
           PlutoListTile(
@@ -506,7 +487,7 @@ class PlutoFeatures extends StatelessWidget {
 }
 
 class PlutoContributors extends StatelessWidget {
-  const PlutoContributors({Key? key}) : super(key: key);
+  const PlutoContributors({super.key});
 
   @override
   Widget build(BuildContext context) {

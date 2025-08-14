@@ -8,7 +8,7 @@ import '../../widget/pluto_example_screen.dart';
 class ColumnFilteringScreen extends StatefulWidget {
   static const routeName = 'feature/column-filtering';
 
-  const ColumnFilteringScreen({Key? key}) : super(key: key);
+  const ColumnFilteringScreen({super.key});
 
   @override
   _ColumnFilteringScreenState createState() => _ColumnFilteringScreenState();
@@ -24,21 +24,13 @@ class _ColumnFilteringScreenState extends State<ColumnFilteringScreen> {
     super.initState();
 
     columns.addAll([
-      PlutoColumn(
-        title: 'Text',
-        field: 'text',
-        type: PlutoColumnType.text(),
-      ),
+      PlutoColumn(title: 'Text', field: 'text', type: PlutoColumnType.text()),
       PlutoColumn(
         title: 'Number',
         field: 'number',
         type: PlutoColumnType.number(),
       ),
-      PlutoColumn(
-        title: 'Date',
-        field: 'date',
-        type: PlutoColumnType.date(),
-      ),
+      PlutoColumn(title: 'Date', field: 'date', type: PlutoColumnType.date()),
       PlutoColumn(
         title: 'Disable',
         field: 'disable',
@@ -62,20 +54,20 @@ class _ColumnFilteringScreenState extends State<ColumnFilteringScreen> {
       topTitle: 'Column filtering',
       topContents: const [
         Text('Filter rows by setting filters on columns.'),
-        SizedBox(
-          height: 10,
+        SizedBox(height: 10),
+        Text(
+          'Select the SetFilter menu from the menu that appears when you tap the icon on the right of the column',
         ),
         Text(
-            'Select the SetFilter menu from the menu that appears when you tap the icon on the right of the column'),
-        Text(
-            'If the filter is set to all or complex conditions, TextField under the column is deactivated.'),
-        Text(
-            'Also, like the Disable column, if enableFilterMenuItem is false, it is excluded from all column filtering conditions.'),
-        Text(
-            'In the case of the Select column, it is a custom filter that can filter multiple filters with commas. (ex: a,b,c)'),
-        SizedBox(
-          height: 10,
+          'If the filter is set to all or complex conditions, TextField under the column is deactivated.',
         ),
+        Text(
+          'Also, like the Disable column, if enableFilterMenuItem is false, it is excluded from all column filtering conditions.',
+        ),
+        Text(
+          'In the case of the Select column, it is a custom filter that can filter multiple filters with commas. (ex: a,b,c)',
+        ),
+        SizedBox(height: 10),
         Text('Check out the source to add custom filters.'),
       ],
       topButtons: [
@@ -130,7 +122,8 @@ class ClassYouImplemented implements PlutoFilterType {
   String get title => 'Custom contains';
 
   @override
-  get compare => ({
+  get compare =>
+      ({
         required String? base,
         required String? search,
         required PlutoColumn? column,

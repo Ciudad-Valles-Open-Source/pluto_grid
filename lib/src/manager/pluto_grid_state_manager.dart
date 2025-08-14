@@ -85,16 +85,16 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
     PlutoChangeNotifierFilterResolver? notifierFilterResolver,
     PlutoGridConfiguration configuration = const PlutoGridConfiguration(),
     PlutoGridMode? mode,
-  })  : refColumns = FilteredList(initialList: columns),
-        refRows = FilteredList(initialList: rows),
-        refColumnGroups = FilteredList<PlutoColumnGroup>(
-          initialList: columnGroups,
-        ),
-        columnMenuDelegate =
-            columnMenuDelegate ?? const PlutoColumnMenuDelegateDefault(),
-        notifierFilterResolver = notifierFilterResolver ??
-            const PlutoNotifierFilterResolverDefault(),
-        gridKey = GlobalKey() {
+  }) : refColumns = FilteredList(initialList: columns),
+       refRows = FilteredList(initialList: rows),
+       refColumnGroups = FilteredList<PlutoColumnGroup>(
+         initialList: columnGroups,
+       ),
+       columnMenuDelegate =
+           columnMenuDelegate ?? const PlutoColumnMenuDelegateDefault(),
+       notifierFilterResolver =
+           notifierFilterResolver ?? const PlutoNotifierFilterResolverDefault(),
+       gridKey = GlobalKey() {
     setConfiguration(configuration);
     setGridMode(mode ?? PlutoGridMode.normal);
     _initialize();
@@ -297,7 +297,7 @@ class PlutoGridStateManager extends PlutoGridStateChangeNotifier {
   /// [PlutoGridStateManager.initializeRowsAsync] repeats [Timer] every [duration],
   /// Process the setting of [refRows] by the size of [chunkSize].
   /// [Isolate] is a good way to handle CPU heavy work, but
-  /// The condition that List<PlutoRow> cannot be passed to Isolate
+  /// The condition that `List<PlutoRow>` cannot be passed to Isolate
   /// solves the problem of UI freezing by dividing the work with Timer.
   ///
   /// {@macro initialize_rows_params}
@@ -386,10 +386,7 @@ class PlutoGridScrollController {
 
   LinkedScrollControllerGroup? horizontal;
 
-  PlutoGridScrollController({
-    this.vertical,
-    this.horizontal,
-  });
+  PlutoGridScrollController({this.vertical, this.horizontal});
 
   ScrollController? get bodyRowsHorizontal => _bodyRowsHorizontal;
 
@@ -428,10 +425,7 @@ class PlutoGridCellPosition {
   final int? columnIdx;
   final int? rowIdx;
 
-  const PlutoGridCellPosition({
-    this.columnIdx,
-    this.rowIdx,
-  });
+  const PlutoGridCellPosition({this.columnIdx, this.rowIdx});
 
   bool get hasPosition => columnIdx != null && rowIdx != null;
 
@@ -452,10 +446,7 @@ class PlutoGridSelectingCellPosition {
   final String? field;
   final int? rowIdx;
 
-  const PlutoGridSelectingCellPosition({
-    this.field,
-    this.rowIdx,
-  });
+  const PlutoGridSelectingCellPosition({this.field, this.rowIdx});
 
   @override
   bool operator ==(covariant Object other) {
